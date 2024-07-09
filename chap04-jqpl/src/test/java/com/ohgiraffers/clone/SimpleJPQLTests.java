@@ -1,4 +1,4 @@
-package com.ohgiraffes.clone;
+package com.ohgiraffers.clone;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

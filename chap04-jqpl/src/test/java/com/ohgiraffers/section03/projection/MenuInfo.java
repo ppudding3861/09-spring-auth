@@ -1,8 +1,7 @@
-package com.ohgiraffes.section03.projection;
+package com.ohgiraffers.section03.projection;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Embedded;
 
 
 /**

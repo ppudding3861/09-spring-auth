@@ -1,7 +1,6 @@
 package com.ohgiraffers.section02.parameter;
 
 
-import com.ohgiraffes.section02.parameter.Menu;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;

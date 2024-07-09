@@ -1,14 +1,11 @@
-package com.ohgiraffes.clone;
+package com.ohgiraffers.section03.projection;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
-@Entity(name = "")
+@Entity(name = "bidirection_menu")
 @Table(name = "tbl_menu")
-public class Menu {
+public class BiDirectionMenu {
 
     @Id
     @Column(name ="menu_code")
@@ -20,16 +17,17 @@ public class Menu {
     @Column(name = "menu_price")
     private int menuPrice;
 
-    @Column(name = "category_code")
-    private int categoryCode;
+    @ManyToOne
+    @JoinColumn(name = "category_code")
+    private BiDirectionCategory categoryCode;
 
     @Column(name = "orderable_status")
     private String orderableStatus;
 
-    public Menu() {
+    public BiDirectionMenu() {
     }
 
-    public Menu(int menuCode, String menuName, int menuPrice, int categoryCode, String orderableStatus) {
+    public BiDirectionMenu(int menuCode, String menuName, int menuPrice, BiDirectionCategory categoryCode, String orderableStatus) {
         this.menuCode = menuCode;
         this.menuName = menuName;
         this.menuPrice = menuPrice;
@@ -61,11 +59,11 @@ public class Menu {
         this.menuPrice = menuPrice;
     }
 
-    public int getCategoryCode() {
+    public BiDirectionCategory getCategoryCode() {
         return categoryCode;
     }
 
-    public void setCategoryCode(int categoryCode) {
+    public void setCategoryCode(BiDirectionCategory categoryCode) {
         this.categoryCode = categoryCode;
     }
 
@@ -79,7 +77,7 @@ public class Menu {
 
     @Override
     public String toString() {
-        return "Menu{" +
+        return "BiDirectionMenu{" +
                 "menuCode=" + menuCode +
                 ", menuName='" + menuName + '\'' +
                 ", menuPrice=" + menuPrice +

@@ -1,4 +1,4 @@
-package com.ohgiraffes.section03.projection;
+package com.ohgiraffers.section03.projection;
 
 public class CategoryInfo {
 

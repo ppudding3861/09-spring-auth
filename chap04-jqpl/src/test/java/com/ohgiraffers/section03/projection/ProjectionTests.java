@@ -1,4 +1,4 @@
-package com.ohgiraffes.section03.projection;
+package com.ohgiraffers.section03.projection;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -43,6 +43,17 @@ public class ProjectionTests {
      * 1. 엔티티 프로젝션
      *  원하는 객체를 바로 조회할 수 있다.
      *  조회된 엔티티는 영석성 컨텍스트에서 관리한다.
+     *
+     *  2. 임베디드 타입 프로젝션
+     *      엔티티와 거의 비슷하게 사용되며 조회의 시작점이 될 수 없다. from절에 사용불가
+     *      임베디드 타입은 영속성 컨텍스트에서 관리되지 않는다.
+     *
+     *  3. 스칼라 타입프로젝션
+     *      숫자,문자,날짜같은 기본데이터 타입니다.
+     *      스칼라 타입은 영속성 컨텍스트에서 관리되지 않는다.
+     * 4. new 명령어를 활용한 프로젝션
+     *      다양한 종류의 단순 값들을 DTO로 바로 조회하는 방식으로 new 패키지명.DTO명을 쓰면 행당DTO로 바로 반환받을 수 있따.
+     *      new 명령어를 사용한 클래스의 객체는 엔티티가 아니므로 영속성 컨텍스트에서 관리되지 않는다.
      * */
 
     // 1. 엔티티 프로젝션
@@ -78,5 +89,24 @@ public class ProjectionTests {
         assertNotNull(menuInfoList);
         menuInfoList.forEach(System.out::println);
 
+    }
+    //3. 스칼라 타입 프로젝션
+    @Test
+    public void TypedQuery를_이용한_스칼라_타입_프로젝션_테스트(){
+        String jpql = "SELECT c.categoryName FROM category_section03 c";
+
+        List<String> categoryList = entityManager.createQuery(jpql, String.class).getResultList();
+        Assertions.assertNotNull(categoryList);
+        categoryList.forEach(System.out::println);
+    }
+
+    // 4. new 명령어를 활용한 프로젝션
+    @Test
+    public void new_명령어를_활용한_프로젝션_테스트(){
+        String jpql = "SELECT new com.ohgiraffers.section03.projection.CategoryInfo(c.categoryCode, c.categoryName) FROM category_section03 c";
+
+        List<CategoryInfo> categoryInfoList = entityManager.createQuery(jpql,CategoryInfo.class).getResultList();
+        Assertions.assertNotNull(categoryInfoList);
+        categoryInfoList.forEach(System.out::println);
     }
 }

@@ -1,11 +1,11 @@
-package com.ohgiraffes.section03.projection;
+package com.ohgiraffers.section05.join;
 
 
 import jakarta.persistence.*;
 
-@Entity(name = "bidirection_menu")
+@Entity(name = "menu_section05")
 @Table(name = "tbl_menu")
-public class BiDirectionMenu {
+public class Menu {
 
     @Id
     @Column(name ="menu_code")
@@ -19,15 +19,15 @@ public class BiDirectionMenu {
 
     @ManyToOne
     @JoinColumn(name = "category_code")
-    private BiDirectionCategory categoryCode;
+    private Category categoryCode;
 
     @Column(name = "orderable_status")
     private String orderableStatus;
 
-    public BiDirectionMenu() {
+    public Menu() {
     }
 
-    public BiDirectionMenu(int menuCode, String menuName, int menuPrice, BiDirectionCategory categoryCode, String orderableStatus) {
+    public Menu(int menuCode, String menuName, int menuPrice, Category categoryCode, String orderableStatus) {
         this.menuCode = menuCode;
         this.menuName = menuName;
         this.menuPrice = menuPrice;
@@ -59,11 +59,10 @@ public class BiDirectionMenu {
         this.menuPrice = menuPrice;
     }
 
-    public BiDirectionCategory getCategoryCode() {
+    public Category getCategoryCode() {
         return categoryCode;
     }
-
-    public void setCategoryCode(BiDirectionCategory categoryCode) {
+    public void setCategoryCode(Category categoryCode) {
         this.categoryCode = categoryCode;
     }
 
@@ -77,7 +76,7 @@ public class BiDirectionMenu {
 
     @Override
     public String toString() {
-        return "BiDirectionMenu{" +
+        return "Menu{" +
                 "menuCode=" + menuCode +
                 ", menuName='" + menuName + '\'' +
                 ", menuPrice=" + menuPrice +

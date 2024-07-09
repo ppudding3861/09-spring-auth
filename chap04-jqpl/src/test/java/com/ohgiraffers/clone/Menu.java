@@ -1,31 +1,38 @@
-package com.ohgiraffes.section03.projection;
+package com.ohgiraffers.clone;
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-@Entity(name = "embedded_menu")
+@Entity(name = "")
 @Table(name = "tbl_menu")
-public class EmbeddedMenu {
-    
+public class Menu {
+
     @Id
-    @Column(name = "menu_code")
+    @Column(name ="menu_code")
     private int menuCode;
-    
-    @Embedded
-    private MenuInfo menuInfo;
-    
+
+    @Column(name = "menu_name")
+    private String menuName;
+
+    @Column(name = "menu_price")
+    private int menuPrice;
+
     @Column(name = "category_code")
     private int categoryCode;
-    
+
     @Column(name = "orderable_status")
     private String orderableStatus;
 
-    public EmbeddedMenu() {
+    public Menu() {
     }
 
-    public EmbeddedMenu(int menuCode, MenuInfo menuInfo, int categoryCode, String orderableStatus) {
+    public Menu(int menuCode, String menuName, int menuPrice, int categoryCode, String orderableStatus) {
         this.menuCode = menuCode;
-        this.menuInfo = menuInfo;
+        this.menuName = menuName;
+        this.menuPrice = menuPrice;
         this.categoryCode = categoryCode;
         this.orderableStatus = orderableStatus;
     }
@@ -38,12 +45,20 @@ public class EmbeddedMenu {
         this.menuCode = menuCode;
     }
 
-    public MenuInfo getMenuInfo() {
-        return menuInfo;
+    public String getMenuName() {
+        return menuName;
     }
 
-    public void setMenuInfo(MenuInfo menuInfo) {
-        this.menuInfo = menuInfo;
+    public void setMenuName(String menuName) {
+        this.menuName = menuName;
+    }
+
+    public int getMenuPrice() {
+        return menuPrice;
+    }
+
+    public void setMenuPrice(int menuPrice) {
+        this.menuPrice = menuPrice;
     }
 
     public int getCategoryCode() {
@@ -64,9 +79,10 @@ public class EmbeddedMenu {
 
     @Override
     public String toString() {
-        return "EmbbededMenu{" +
+        return "Menu{" +
                 "menuCode=" + menuCode +
-                ", menuInfo=" + menuInfo +
+                ", menuName='" + menuName + '\'' +
+                ", menuPrice=" + menuPrice +
                 ", categoryCode=" + categoryCode +
                 ", orderableStatus='" + orderableStatus + '\'' +
                 '}';

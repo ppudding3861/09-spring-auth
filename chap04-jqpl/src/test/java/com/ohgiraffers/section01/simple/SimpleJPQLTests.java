@@ -1,4 +1,4 @@
-package com.ohgiraffes.section01.simple;
+package com.ohgiraffers.section01.simple;
 
 
 import jakarta.persistence.*;
