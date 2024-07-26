@@ -102,7 +102,6 @@ public class GroupFunctionTests {
                 .setParameter("minPrice", minPrice)
                 .getResultList();
 
-
         //then
         Assertions.assertNotNull(sumPriceOfCategoryList);
         sumPriceOfCategoryList.forEach(row -> {
